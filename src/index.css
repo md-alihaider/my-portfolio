@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+:root {
+  /* oklch - Dark Mode (Default) */
+  --bg-dark: oklch(0.1 0.07 190);
+  --bg: oklch(0.15 0.07 190);
+  --bg-light: oklch(0.2 0.07 190);
+  --text: oklch(0.96 0.1 190);
+  --text-muted: oklch(0.76 0.1 190);
+  --highlight: oklch(0.5 0.14 190);
+  --border: oklch(0.4 0.14 190);
+  --border-muted: oklch(0.3 0.14 190);
+  --primary: oklch(0.76 0.14 190);
+  --secondary: oklch(0.76 0.14 10);
+  --danger: oklch(0.7 0.14 30);
+  --warning: oklch(0.7 0.14 100);
+  --success: oklch(0.7 0.14 160);
+  --info: oklch(0.7 0.14 260);
+}
+
+body.light {
+  /* oklch - Light Mode */
+  --bg-dark: oklch(0.92 0.07 190);
+  --bg: oklch(0.96 0.07 190);
+  --bg-light: oklch(1 0.07 190);
+  --text: oklch(0.15 0.14 190);
+  --text-muted: oklch(0.4 0.14 190);
+  --highlight: oklch(1 0.14 190);
+  --border: oklch(0.6 0.14 190);
+  --border-muted: oklch(0.7 0.14 190);
+  --primary: oklch(0.4 0.14 190);
+  --secondary: oklch(0.4 0.14 10);
+  --danger: oklch(0.5 0.14 30);
+  --warning: oklch(0.5 0.14 100);
+  --success: oklch(0.5 0.14 160);
+  --info: oklch(0.5 0.14 260);
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+/* Animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
