@@ -7,38 +7,37 @@ const Hero = () => {
   const [index, setIndex] = useState(0);
 
   // Rotate roles every 2 seconds
- useEffect(() => {
-   const interval = setInterval(() => {
-     setIndex((prev) => (prev + 1) % roles.length);
-   }, 2000);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % roles.length);
+    }, 2000);
 
-   return () => clearInterval(interval);
- }, [roles.length]);
-
+    return () => clearInterval(interval);
+  }, [roles.length]);
 
   return (
     <section
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-16 px-4 md:px-8"
     >
-      {/* Subtle floating background glow */}
+      {/* Subtle background glow */}
       <div
-        className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full blur-[140px] opacity-10 animate-pulse-slow pointer-events-none -z-10"
+        className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[420px] h-[420px] rounded-full blur-[140px] opacity-10 animate-pulse-slow pointer-events-none -z-10"
         style={{ backgroundColor: "var(--primary)" }}
       ></div>
 
       <div className="max-w-4xl mx-auto w-full flex flex-col items-center text-center animate-fade-in">
-        {/* Small intro */}
-        <h3
-          className="text-2xl md:text-3xl font-medium mb-2"
+        {/* Small intro text */}
+        <p
+          className="text-sm md:text-base mb-2 tracking-wide"
           style={{ color: "var(--text-muted)" }}
         >
-          Hi, I'm
-        </h3>
+          Hi, I&apos;m
+        </p>
 
         {/* Name */}
         <h1
-          className="text-5xl md:text-7xl font-bold leading-tight tracking-tight mb-3 wrap-break-wordbreak-words animate-fade-up"
+          className="text-4xl md:text-6xl font-bold leading-tight tracking-tight mb-2 break-words"
           style={{ color: "var(--text)" }}
         >
           {PERSONAL_INFO.name}
@@ -46,27 +45,22 @@ const Hero = () => {
 
         {/* Animated Role */}
         <div
-          className="text-2xl md:text-4xl font-bold h-10 flex justify-center items-center mt-2 animate-fade-up-slow"
+          className="mt-1 text-xl md:text-3xl font-semibold animate-fade-up-slow text-center leading-snug"
           style={{ color: "var(--text)" }}
         >
-          <span>I'm a&nbsp;</span>
-          <span
-            className="transition-all duration-500"
-            style={{ color: "var(--primary)" }}
-          >
-            {roles[index]}
-          </span>
+          I&apos;m a{" "}
+          <span style={{ color: "var(--primary)" }}>{roles[index]}</span>
         </div>
 
         {/* Bio */}
         <p
-          className="max-w-2xl leading-relaxed text-base md:text-xl mb-8 mt-6 px-2 animate-fade-up-slower"
+          className="max-w-2xl leading-relaxed text-sm md:text-lg mb-8 mt-5 px-2 animate-fade-up-slower"
           style={{ color: "var(--text-muted)" }}
         >
           {PERSONAL_INFO.bio}
         </p>
 
-        {/* Socials */}
+        {/* Social icons */}
         <div className="flex gap-4 mb-8 animate-fade-up-slower">
           {Object.entries(PERSONAL_INFO.socials).map(([key, url]) => (
             <a
@@ -88,7 +82,7 @@ const Hero = () => {
           ))}
         </div>
 
-        {/* Buttons (tap-friendly) */}
+        {/* Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto px-4 sm:px-0 animate-fade-up">
           {/* Download CV */}
           <a
