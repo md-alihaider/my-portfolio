@@ -37,7 +37,7 @@ const Hero = () => {
 
         {/* Name */}
         <h1
-          className="text-4xl md:text-6xl font-bold leading-tight tracking-tight mb-2 break-words"
+          className="text-4xl md:text-6xl font-bold leading-tight tracking-tight mb-2 wrap-break-wordbreak-words"
           style={{ color: "var(--text)" }}
         >
           {PERSONAL_INFO.name}
