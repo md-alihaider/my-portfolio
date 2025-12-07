@@ -16,23 +16,34 @@ import {
 } from "lucide-react";
 import productStoreImg from "../assets/icons/Product-store.png";
 
-
 export const PERSONAL_INFO = {
   name: "Ali Haider",
   logo: "AH",
-  roles: ["Full Stack Developer", "UI/UX Designer", "Tech Enthusiast"],
-  title: "Full Stack Developer",
-  bio: "I'm a passionate developer creating robust server solutions and scalable architectures for modern web applications.",
+
+  roles: [
+    "Full Stack Developer",
+    "React & Node.js Developer",
+    "Tech Enthusiast",
+  ],
+
+  title: "Full Stack Developer (MERN Stack)",
+
+  bio: "I build real-world web applications using React, Node.js, and MongoDB—focusing on clean architecture, performance, and user-friendly interfaces.",
+
   about:
-    "I am a Full Stack Developer with a passion for building beautiful and functional web applications. I have a strong background in both frontend and backend development, and I am always eager to learn new technologies.",
+    "I’m a Full Stack Developer with a strong focus on the MERN stack, where I enjoy turning ideas into clean, functional, and user-friendly web applications. I work across both frontend and backend—crafting responsive interfaces in React and building secure, scalable APIs using Node.js, Express, and MongoDB. I have completed my BCA and have developed multiple full-stack projects that helped me understand real development practices like state management, authentication, database modeling, routing, and deployment. My goal is to build products that are not only technically solid, but also meaningful and enjoyable for users.",
+
   email: "alihaiderbgp@gmail.com",
   location: "Bihar, India",
+
   socials: {
     github: "https://github.com/md-alihaider",
     linkedin: "https://www.linkedin.com/in/md-ali-haider/",
-    instagram: "https://www.instagram.com/alihaider_7056/#",
+    instagram: "https://www.instagram.com/alihaider_7056",
   },
 };
+
+
 
 export const NAV_LINKS = [
   { name: "Home", href: "#home" },
@@ -43,90 +54,83 @@ export const NAV_LINKS = [
 ];
 
 export const SKILLS = [
+  // Frontend
   {
     name: "HTML",
     category: "Frontend",
-    percent: 95,
+    percent: 90,
     icon: <FileCode className="w-6 h-6" />,
   },
   {
     name: "CSS",
     category: "Frontend",
-    percent: 95,
+    percent: 85,
     icon: <Palette className="w-6 h-6" />,
   },
   {
     name: "JavaScript",
     category: "Frontend",
-    percent: 90,
+    percent: 80,
     icon: <Code2 className="w-6 h-6" />,
   },
   {
     name: "React",
     category: "Frontend",
-    percent: 90,
+    percent: 80,
     icon: <Layout className="w-6 h-6" />,
   },
   {
-    name: "Tailwind",
+    name: "Tailwind CSS",
     category: "Frontend",
-    percent: 90,
+    percent: 80,
     icon: <Briefcase className="w-6 h-6" />,
   },
-  {
-    name: "Next.js",
-    category: "Frontend",
-    percent: 85,
-    icon: <Globe className="w-6 h-6" />,
-  },
 
+  // Backend
   {
     name: "Node.js",
     category: "Backend",
-    percent: 85,
+    percent: 75,
     icon: <Server className="w-6 h-6" />,
   },
   {
-    name: "Python",
+    name: "Express.js",
     category: "Backend",
-    percent: 80,
+    percent: 75,
     icon: <Terminal className="w-6 h-6" />,
   },
   {
-    name: "PostgreSQL",
+    name: "MongoDB",
     category: "Backend",
-    percent: 75,
+    percent: 70,
     icon: <Database className="w-6 h-6" />,
   },
+
+  // ✅ Python Added Here
   {
-    name: "Redis",
+    name: "Python",
     category: "Backend",
-    percent: 70,
-    icon: <HardDrive className="w-6 h-6" />,
+    percent: 65,
+    icon: <Terminal className="w-6 h-6" />,
   },
 
+  // Tools
   {
-    name: "Docker",
+    name: "Git & GitHub",
     category: "Tools",
-    percent: 75,
-    icon: <Box className="w-6 h-6" />,
-  },
-  {
-    name: "AWS",
-    category: "Tools",
-    percent: 70,
-    icon: <Share2 className="w-6 h-6" />,
-  },
-  {
-    name: "Git",
-    category: "Tools",
-    percent: 90,
+    percent: 80,
     icon: <Command className="w-6 h-6" />,
+  },
+  {
+    name: "VS Code",
+    category: "Tools",
+    percent: 85,
+    icon: <Box className="w-6 h-6" />,
   },
   {
     name: "Figma",
     category: "Tools",
-    percent: 85,
+    percent: 70,
     icon: <Layers className="w-6 h-6" />,
   },
 ];
@@ -136,44 +140,13 @@ export const PROJECTS = [
     id: 1,
     title: "Full Stack Product Store",
     description:
-      "A complete inventory management system allowing users to create, update, and delete products with real-time MongoDB integration.",
+      "A complete full-stack inventory management system where users can add, update, and delete products. Includes a custom REST API built with Node.js and Express, real-time MongoDB integration, clean architecture, and a responsive React frontend.",
     tags: ["React", "Node.js", "MongoDB", "Express"],
     category: "Full Stack",
     image: productStoreImg,
     demoLink: "https://product-store-w5dq.onrender.com",
     repoLink: "https://github.com/md-alihaider/product-store/tree/main",
   },
-  {
-    id: 2,
-    title: "Task Master AI",
-    description: "AI-powered productivity app with drag-and-drop interface.",
-    tags: ["TypeScript", "OpenAI", "Firebase"],
-    category: "Frontend",
-    image:
-      "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&q=80&w=800",
-    demoLink: "#",
-    repoLink: "#",
-  },
-  {
-    id: 3,
-    title: "Secure API Gateway",
-    description: "High-performance API gateway with rate limiting.",
-    tags: ["Go", "Redis", "Docker"],
-    category: "Backend",
-    image:
-      "https://images.unsplash.com/photo-1558494949-ef2bb6db8744?auto=format&fit=crop&q=80&w=800",
-    demoLink: "#",
-    repoLink: "#",
-  },
-  {
-    id: 4,
-    title: "Social Analytics",
-    description: "Social media engagement tracking platform.",
-    tags: ["Vue.js", "Django", "PostgreSQL"],
-    category: "Full Stack",
-    image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
-    demoLink: "#",
-    repoLink: "#",
-  },
+
 ];
+

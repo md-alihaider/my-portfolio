@@ -1,24 +1,23 @@
 import React from "react";
-// Using icons for Education, Projects, and Logic
 import { ArrowRight, GraduationCap, FolderGit2, Brain } from "lucide-react";
 import { PERSONAL_INFO } from "../utils/data";
 import profileImg from "../assets/icons/Aboutme.jpg";
+
 const About = () => {
-  // New "Highlights" to fill space without repeating Skills
   const highlights = [
     {
       label: "Education",
-      value: "BCA", // Change this to your degree
+      value: "BCA",
       icon: GraduationCap,
     },
     {
       label: "Projects",
-      value: "5+ Built", // Highlights that you build things
+      value: "5+ Built",
       icon: FolderGit2,
     },
     {
       label: "Problem Solving",
-      value: "DSA & Logic", // Shows you understand computer science fundamentals
+      value: "DSA & Logic",
       icon: Brain,
     },
   ];
@@ -31,8 +30,8 @@ const About = () => {
     >
       <div className="max-w-6xl mx-auto w-full">
         <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* LEFT SIDE: Profile Image (Visual Weight) */}
-          <div className="relative group order-2 md:order-1">
+          {/* LEFT SIDE IMAGE + BADGE */}
+          <div className="relative group order-2 md:order-1 animate-fade-up">
             <div
               className="absolute -inset-4 rounded-3xl opacity-20 blur-xl transition-all group-hover:opacity-30"
               style={{ backgroundColor: "var(--primary)" }}
@@ -45,7 +44,6 @@ const About = () => {
                 backgroundColor: "var(--bg)",
               }}
             >
-              {/* Replace with your image */}
               <img
                 src={profileImg}
                 alt="Profile"
@@ -53,9 +51,9 @@ const About = () => {
               />
             </div>
 
-            {/* "Coder" Badge */}
+            {/* Badge */}
             <div
-              className="absolute -bottom-6 -right-6 p-4 rounded-xl shadow-xl flex items-center gap-3 animate-bounce-slow"
+              className="absolute -bottom-6 -right-6 p-4 rounded-xl shadow-xl flex items-center gap-3 animate-fade-in"
               style={{
                 backgroundColor: "var(--bg)",
                 border: "1px solid var(--border)",
@@ -71,31 +69,31 @@ const About = () => {
             </div>
           </div>
 
-          {/* RIGHT SIDE: Text Content */}
+          {/* RIGHT SIDE TEXT */}
           <div className="order-1 md:order-2">
             <h2
-              className="text-4xl md:text-5xl font-bold mb-6"
+              className="text-4xl md:text-5xl font-bold mb-6 animate-fade-up"
               style={{ color: "var(--text)" }}
             >
               About <span style={{ color: "var(--primary)" }}>Me</span>
             </h2>
 
             <h3
-              className="text-2xl font-semibold mb-6"
+              className="text-2xl font-semibold mb-6 animate-fade-up-slow"
               style={{ color: "var(--text)" }}
             >
               {PERSONAL_INFO.title}
             </h3>
 
             <p
-              className="leading-relaxed mb-8 text-base md:text-lg opacity-90"
+              className="leading-relaxed mb-8 text-base md:text-lg opacity-90 animate-fade-up-slower"
               style={{ color: "var(--text-muted)" }}
             >
               {PERSONAL_INFO.about}
             </p>
 
-            {/* HIGHLIGHTS GRID (Education & Activity) */}
-            <div className="grid grid-cols-3 gap-4 mb-10">
+            {/* Highlights */}
+            <div className="grid grid-cols-3 gap-4 mb-10 animate-fade-in">
               {highlights.map((item, index) => (
                 <div
                   key={index}
@@ -126,10 +124,10 @@ const About = () => {
             </div>
 
             {/* Buttons */}
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4 animate-fade-up-slow">
               <a
                 href="#contact"
-                className="px-8 py-3 rounded-full font-bold text-base transition-all hover:scale-105 hover:shadow-lg flex items-center gap-2"
+                className="px-8 py-3 rounded-full font-bold text-base transition-all active:scale-95 sm:hover:scale-105 sm:hover:shadow-lg flex items-center gap-2"
                 style={{
                   backgroundColor: "var(--primary)",
                   color: "#fff",
@@ -140,11 +138,10 @@ const About = () => {
 
               <a
                 href="#projects"
-                className="px-8 py-3 rounded-full font-bold text-base border transition-all hover:bg-(--primary)/10 flex items-center gap-2"
+                className="px-8 py-3 rounded-full font-bold text-base border transition-all active:scale-95 sm:hover:bg-(--primary)/10 flex items-center gap-2"
                 style={{
                   borderColor: "var(--primary)",
                   color: "var(--text)",
-                  backgroundColor: "transparent",
                 }}
               >
                 My Projects

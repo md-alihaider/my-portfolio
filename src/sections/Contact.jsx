@@ -3,8 +3,7 @@ import { PERSONAL_INFO } from "../utils/data";
 import { Mail, MapPin, Send, Loader2 } from "lucide-react";
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 import emailjs from "@emailjs/browser";
-import toast, { Toaster } from "react-hot-toast"; // Import Toaster
-
+import toast, { Toaster } from "react-hot-toast";
 
 const Contact = () => {
   const [name, setName] = useState("");
@@ -16,7 +15,7 @@ const Contact = () => {
     e.preventDefault();
 
     if (!name || !email || !message) {
-      toast.error("Please fill in all fields"); // Error toast
+      toast.error("Please fill in all fields");
       return;
     }
 
@@ -25,7 +24,7 @@ const Contact = () => {
     const templateParams = {
       from_name: name,
       from_email: email,
-      message: message,
+      message,
       to_name: PERSONAL_INFO.name,
     };
 
@@ -36,20 +35,16 @@ const Contact = () => {
         templateParams,
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       )
-      .then((response) => {
-        console.log("SUCCESS!", response.status, response.text);
-        toast.success("Message sent successfully!"); // Success toast
+      .then(() => {
+        toast.success("Message sent successfully!");
         setName("");
         setEmail("");
         setMessage("");
       })
-      .catch((err) => {
-        console.log("FAILED...", err);
-        toast.error("Failed to send message. Please try again."); // Error toast
+      .catch(() => {
+        toast.error("Failed to send message. Please try again.");
       })
-      .finally(() => {
-        setIsSending(false);
-      });
+      .finally(() => setIsSending(false));
   };
 
   return (
@@ -58,12 +53,17 @@ const Contact = () => {
       className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-16 px-4 md:px-8"
       style={{ backgroundColor: "var(--bg)" }}
     >
-      {/* This component renders the actual toast popups */}
-      <Toaster position="bottom-right" reverseOrder={false} />
+      <Toaster position="bottom-right" />
 
-      <div className="max-w-6xl mx-auto w-full">
-        {/* Header Section */}
-        <div className="text-center mb-16">
+      {/* Subtle background glow */}
+      <div
+        className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[420px] h-[420px] rounded-full blur-[140px] opacity-10 animate-pulse-slow pointer-events-none -z-10"
+        style={{ backgroundColor: "var(--primary)" }}
+      ></div>
+
+      <div className="max-w-6xl mx-auto w-full animate-fade-in">
+        {/* Header */}
+        <div className="text-center mb-16 animate-fade-up">
           <h2
             className="text-3xl md:text-4xl font-bold mb-4"
             style={{ color: "var(--text)" }}
@@ -78,10 +78,10 @@ const Contact = () => {
           </p>
         </div>
 
-        {/* Content Grid */}
+        {/* Grid */}
         <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-start">
-          {/* Left Side: Contact Info */}
-          <div className="space-y-10 mt-4">
+          {/* LEFT: CONTACT INFO */}
+          <div className="space-y-10 mt-4 animate-fade-up-slow">
             <h3
               className="text-2xl font-bold mb-8"
               style={{ color: "var(--text)" }}
@@ -93,7 +93,7 @@ const Contact = () => {
               {/* Email */}
               <div className="flex items-start gap-5 group">
                 <div
-                  className="w-14 h-14 rounded-full shrink-0 flex items-center justify-center transition-all group-hover:scale-110 shadow-sm"
+                  className="w-14 h-14 rounded-full flex items-center justify-center transition-all active:scale-95 sm:hover:scale-110 shadow-sm"
                   style={{
                     backgroundColor: "var(--bg-light)",
                     color: "var(--primary)",
@@ -101,7 +101,7 @@ const Contact = () => {
                 >
                   <Mail className="w-6 h-6" />
                 </div>
-                <div className="flex-1 min-w-0 pt-1">
+                <div>
                   <p
                     className="text-sm font-bold uppercase tracking-wider mb-1"
                     style={{ color: "var(--text-muted)" }}
@@ -110,7 +110,7 @@ const Contact = () => {
                   </p>
                   <a
                     href={`mailto:${PERSONAL_INFO.email}`}
-                    className="text-lg font-medium transition-colors hover:text-(--primary) break-all"
+                    className="text-lg font-medium transition-colors sm:hover:text-(--primary)"
                     style={{ color: "var(--text)" }}
                   >
                     {PERSONAL_INFO.email}
@@ -121,7 +121,7 @@ const Contact = () => {
               {/* LinkedIn */}
               <div className="flex items-start gap-5 group">
                 <div
-                  className="w-14 h-14 rounded-full shrink-0 flex items-center justify-center transition-all group-hover:scale-110 shadow-sm"
+                  className="w-14 h-14 rounded-full flex items-center justify-center transition-all active:scale-95 sm:hover:scale-110 shadow-sm"
                   style={{
                     backgroundColor: "var(--bg-light)",
                     color: "var(--primary)",
@@ -129,7 +129,7 @@ const Contact = () => {
                 >
                   <FaLinkedin className="w-6 h-6" />
                 </div>
-                <div className="pt-1">
+                <div>
                   <p
                     className="text-sm font-bold uppercase tracking-wider mb-1"
                     style={{ color: "var(--text-muted)" }}
@@ -138,7 +138,8 @@ const Contact = () => {
                   </p>
                   <a
                     href={PERSONAL_INFO.socials.linkedin}
-                    className="text-lg font-medium transition-colors hover:text-(--primary)"
+                    target="_blank"
+                    className="text-lg font-medium transition-colors sm:hover:text-(--primary)"
                     style={{ color: "var(--text)" }}
                   >
                     {PERSONAL_INFO.name}
@@ -149,7 +150,7 @@ const Contact = () => {
               {/* Location */}
               <div className="flex items-start gap-5 group">
                 <div
-                  className="w-14 h-14 rounded-full shrink-0 flex items-center justify-center transition-all group-hover:scale-110 shadow-sm"
+                  className="w-14 h-14 rounded-full flex items-center justify-center transition-all active:scale-95 sm:hover:scale-110 shadow-sm"
                   style={{
                     backgroundColor: "var(--bg-light)",
                     color: "var(--primary)",
@@ -157,7 +158,7 @@ const Contact = () => {
                 >
                   <MapPin className="w-6 h-6" />
                 </div>
-                <div className="pt-1">
+                <div>
                   <p
                     className="text-sm font-bold uppercase tracking-wider mb-1"
                     style={{ color: "var(--text-muted)" }}
@@ -175,21 +176,21 @@ const Contact = () => {
             </div>
 
             {/* Social Links */}
-            <div className="pt-8">
+            <div className="pt-8 animate-fade-up-slower">
               <h4
                 className="text-lg font-bold mb-5"
                 style={{ color: "var(--text)" }}
               >
                 Connect With Me
               </h4>
+
               <div className="flex gap-4">
                 {Object.entries(PERSONAL_INFO.socials).map(([key, url]) => (
                   <a
                     key={key}
                     href={url}
                     target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-110 hover:-translate-y-1 shadow-md hover:shadow-lg"
+                    className="w-12 h-12 rounded-full flex items-center justify-center transition-all active:scale-95 sm:hover:scale-110 shadow-md sm:hover:shadow-lg"
                     style={{
                       backgroundColor: "var(--bg-light)",
                       color: "var(--text)",
@@ -204,9 +205,9 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Right Side: Form Card */}
+          {/* RIGHT: FORM CARD */}
           <div
-            className="p-8 md:p-10 rounded-3xl shadow-2xl transition-all hover:shadow-(--primary)/5"
+            className="p-8 md:p-10 rounded-3xl shadow-xl animate-fade-up"
             style={{
               backgroundColor: "var(--bg-light)",
               border: `1px solid var(--border)`,
@@ -218,7 +219,9 @@ const Contact = () => {
             >
               Send a Message
             </h3>
+
             <form onSubmit={handleSubmit}>
+              {/* Name */}
               <div>
                 <label
                   className="block text-sm font-bold mb-2 pl-1"
@@ -228,8 +231,8 @@ const Contact = () => {
                 </label>
                 <input
                   type="text"
-                  placeholder="Ali haider..."
-                  className="w-full px-5 py-3 rounded-xl outline-none transition-all focus:ring-2 focus:ring-opacity-50"
+                  placeholder="Ali Haider..."
+                  className="w-full px-5 py-3 rounded-xl outline-none transition-all active:scale-[0.99] focus:ring-2 focus:ring-opacity-50"
                   style={{
                     backgroundColor: "var(--bg)",
                     border: `1px solid var(--border-muted)`,
@@ -240,6 +243,7 @@ const Contact = () => {
                 />
               </div>
 
+              {/* Email */}
               <div className="mt-6">
                 <label
                   className="block text-sm font-bold mb-2 pl-1"
@@ -250,7 +254,7 @@ const Contact = () => {
                 <input
                   type="email"
                   placeholder="xyz@gmail.com"
-                  className="w-full px-5 py-3 rounded-xl outline-none transition-all focus:ring-2 focus:ring-opacity-50"
+                  className="w-full px-5 py-3 rounded-xl outline-none transition-all active:scale-[0.99] focus:ring-2 focus:ring-opacity-50"
                   style={{
                     backgroundColor: "var(--bg)",
                     border: `1px solid var(--border-muted)`,
@@ -261,6 +265,7 @@ const Contact = () => {
                 />
               </div>
 
+              {/* Message */}
               <div className="mt-6">
                 <label
                   className="block text-sm font-bold mb-2 pl-1"
@@ -271,7 +276,7 @@ const Contact = () => {
                 <textarea
                   rows="4"
                   placeholder="Hello! I'd like to talk about..."
-                  className="w-full px-5 py-3 rounded-xl outline-none transition-all focus:ring-2 focus:ring-opacity-50 resize-none"
+                  className="w-full px-5 py-3 rounded-xl outline-none transition-all active:scale-[0.99] focus:ring-2 focus:ring-opacity-50 resize-none"
                   style={{
                     backgroundColor: "var(--bg)",
                     border: `1px solid var(--border-muted)`,
@@ -282,10 +287,11 @@ const Contact = () => {
                 ></textarea>
               </div>
 
+              {/* Submit Button */}
               <button
                 type="submit"
                 disabled={isSending}
-                className="w-full py-3.5 rounded-full font-bold text-base transition-all hover:opacity-90 flex items-center justify-center gap-2 mt-8 shadow-lg hover:shadow-xl hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full py-3.5 rounded-full font-bold text-base transition-all active:scale-[0.97] sm:hover:-translate-y-1 flex items-center justify-center gap-2 mt-8 shadow-lg sm:hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
                 style={{
                   backgroundColor: "var(--primary)",
                   color: "#fff",
